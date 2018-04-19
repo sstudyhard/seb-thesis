@@ -6,12 +6,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="/main.js"></script>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
   </head>
   <body>
+    <a-scene vr-mode-ui="enabled: false">
+      <a-entity camera look-controls="reverseMouseDrag: true"></a-entity>
+      <a-assets>
+        <img id="exile" src="images/exile.png">
+      </a-assets>
+      <a-sky src="images/curtains.jpg" rotation="0 -130 0">
+        <a-animation attribute="rotation" fill="forwards" easing="linear" dur="50000" from="0 0 0" to="0 360 0" repeat="indefinite"></a-animation>
+      </a-sky>
+      <a-entity class="link"
+                geometry="primitive: plane; height: 3; width: 6"
+                material="shader: flat; alphaTest: 0.5; src: #exile"
+                position="5 6 -6"
+                onClick="showManifesto()"></a-entity>
+    </a-scene>
 
-    <div id="container"></div>
-
-    <script src="/three.min.js"></script>
-    <script src="/main.js"></script>
   </body>
 </html>
