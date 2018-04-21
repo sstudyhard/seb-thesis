@@ -34,16 +34,34 @@ a {
 
 @keyframes spin {
   0% {
-    transform: rotate(0deg);
+    opacity: 1;
   }
+
+  50% {
+    opacity: 0
+  }
+
   100% {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
 
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeout {
+  animation: fadeout 1s 1 ease;
+}
+
 .loading {
-  width: 100px;
-  animation: spin 5s infinite linear;
+  width: 60px;
+  animation: spin 1s infinite ease;
 }
 
 .loading img {
