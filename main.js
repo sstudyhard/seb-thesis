@@ -1,8 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var scene = document.querySelector('a-scene');
+    var scene = document.querySelector('a-sky');
     var splash = document.querySelector('#splash');
-    scene.addEventListener('loaded', function (e) {
+    scene.addEventListener('materialtextureloaded', function (e) {
+      setTimeout(function() {
+        splash.classList.add('fadeout');
+        setTimeout(function() {
         splash.style.display = 'none';
+      }, 1000);
+      }, 1000);
     });
 }); 
 
