@@ -6,25 +6,57 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="/main.js"></script>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/mayognaise/aframe-mouse-cursor-component/master/dist/aframe-mouse-cursor-component.min.js"></script>
+    <script src="/main.js"></script>
   </head>
   <body>
     <a-scene vr-mode-ui="enabled: false">
-      <a-entity camera look-controls="reverseMouseDrag: true"></a-entity>
       <a-assets>
         <img id="exile" src="images/exile.png">
+        <img id="manifesto1" src="images/manifesto1.png">
+        <img id="manifesto2" src="images/manifesto2.png">
+        <img id="manifesto3" src="images/manifesto3.png">
+        <img id="venncursor" src="images/venncursor.png">
       </a-assets>
-      <a-sky src="images/curtains.jpg" rotation="0 -130 0">
-        <a-animation attribute="rotation" fill="forwards" easing="linear" dur="50000" from="0 0 0" to="0 360 0" repeat="indefinite"></a-animation>
+      <a-sky src="images/curtains.jpg" rotation="0 0 0">
+        
       </a-sky>
-      <a-entity class="link"
-                geometry="primitive: plane; height: 3; width: 6"
-                material="shader: flat; alphaTest: 0.5; src: #exile"
-                position="5 6 -6"
-                onClick="showManifesto()"></a-entity>
+      <a-entity position="0 1 0">
+        <a-entity class="link"
+                  geometry="primitive: plane; height: 1.5; width: 3.5"
+                  material="shader: flat; alphaTest: 0.5; src: #exile"
+                  position="0.6 3 -6"
+                  rotation="0 10 15"
+                  event-set__1="_event: mousedown; scale: 1 1 1"
+                  event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+                  event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+                  event-set__4="_event: mouseleave; scale: 1 1 1"
+                  show-manifesto="on: click">
+        </a-entity>
+        <a-animation attribute="rotation" fill="forwards" easing="linear" dur="100000" from="0 0 0" to="0 -360 0" repeat="indefinite"></a-animation>
+      </a-entity>
+      <a-curvedimage src="#manifesto1" height="5" radius="3" theta-length="72" position="0 0 0"
+                 rotation="0 100 0" scale="20 20 20" alpha-test="0.5">
+        <a-animation attribute="rotation" fill="forwards" easing="linear" dur="100000" from="0 0 0" to="0 -360 0" repeat="indefinite"></a-animation>
+      </a-curvedimage>
+      <a-curvedimage src="#manifesto2" height="5" radius="3" theta-length="72" position="0 20 0"
+                 rotation="0 0 0" scale="20 20 20" alpha-test="0.5">
+        <a-animation attribute="rotation" fill="forwards" easing="linear" dur="100000" from="0 0 0" to="0 360 0" repeat="indefinite"></a-animation>
+      </a-curvedimage>
+      <a-curvedimage src="#manifesto3" height="5" radius="3" theta-length="72" position="5 0 5"
+                 rotation="0 200 0" scale="20 20 20" alpha-test="0.5">
+        <a-animation attribute="rotation" fill="forwards" easing="linear" dur="100000" from="0 180 0" to="0 -180 0" repeat="indefinite"></a-animation>
+      </a-curvedimage>
+      <a-entity camera look-controls="reverseMouseDrag: true">
+        <a-entity cursor="fuse: true; fuseTimeout: 500"
+                  position="0 0 -1"
+                  geometry="primitive: plane; height: 0.2; width: 0.16"
+                  material="shader: flat; alphaTest: 0.5; src: #venncursor"
+                  event-set__1="_event: mouseenter; color: aliceblue"
+                  event-set__2="_event: mouseleave; color: white"
+                  raycaster="objects: .link">
+        </a-entity>
+      </a-entity>
     </a-scene>
-
   </body>
 </html>
